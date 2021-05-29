@@ -1,10 +1,10 @@
 FROM ubuntu:18.04
 RUN apt-get update \
     && apt-get install git tomcat9 default-jdk maven -y
-RUN mkdir -p ~/projects \
-    && cd ~/projects \
+RUN mkdir -p projects \
+    && cd projects \
     && git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-WORKDIR ~/projects/boxfuse-sample-java-war-hello
+WORKDIR projects/boxfuse-sample-java-war-hello
 RUN ls -lahF \
     && pwd \
     && mvn package
