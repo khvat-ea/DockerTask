@@ -11,12 +11,12 @@ ENV CATALINA_HOME /opt/apache-tomcat-9.0.46
 
 # Развертывание Tomcat
 # Согласно инструкции https://tomcat.apache.org/tomcat-9.0-doc/setup.html
-RUN cd $CATALINA_HOME/bin \
+RUN useradd -r tomcat \
+    && cd $CATALINA_HOME/bin \
     && tar xvfz commons-daemon-native.tar.gz \
     && cd commons-daemon-1.2.4-native-src/unix \
     && ./configure \
-    && make \
-    && cp jsvc ../..
+    && make
 
 # Развертывание приложения java-war
 RUN cd /tmp \
@@ -27,4 +27,4 @@ RUN cp target/hello-1.0.war $CATALINA_HOME/webapps/
 
 # Условия запуска контейнера
 EXPOSE 8080
-CMD $CATALINA_HOME/bin/daemon.sh start
+CMD $CATALINA_HOME/bin/daemon.sh run
