@@ -27,4 +27,4 @@ RUN cp target/hello-1.0.war $CATALINA_HOME/webapps/
 
 # Условия запуска контейнера
 EXPOSE 8080
-CMD $CATALINA_HOME/bin/daemon.sh
+CMD $CATALINA_HOME/bin/daemon.sh start
