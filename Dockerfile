@@ -16,7 +16,8 @@ RUN useradd -r tomcat \
     && tar xvfz commons-daemon-native.tar.gz \
     && cd commons-daemon-1.2.4-native-src/unix \
     && ./configure \
-    && make
+    && make \
+    && cp jsvc ../..
 
 # Развертывание приложения java-war
 RUN cd /tmp \
